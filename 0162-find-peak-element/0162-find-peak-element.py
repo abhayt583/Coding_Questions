@@ -11,7 +11,6 @@ class Solution:
         for i in range(len(nums)):
             if nums[i]>nums[i+1] and nums[i]>nums[i-1]:
                 return i
-            else:
-                continue
+         
         
        
