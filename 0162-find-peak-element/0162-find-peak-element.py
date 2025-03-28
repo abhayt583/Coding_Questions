@@ -1,10 +1,15 @@
 class Solution:
     def findPeakElement(self, nums: List[int]) -> int:
-        maxx=float('-inf')
-        for i,n in enumerate(nums):
-            if n>maxx:
-                maxx=n
-            else:
-                continue
-        return nums.index(maxx)
-       
+        if not nums:
+            return None
+        if len(nums)==1:
+            return 0
+        if nums[0]>=nums[1]:
+            return 0
+        if nums[-1]>=nums[-2]:
+            return len(nums)-1
+
+        for i in range (1,len(nums)-1):
+            if nums[i]>= nums[i+1] and nums[i]>=nums[i-1]:
+                return i
+        
