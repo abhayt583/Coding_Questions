@@ -1,31 +1,26 @@
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
-        l=0
-        r=len(nums)-1
-        
-        while l<r:
-            mid=(l+r)//2
-            if nums[l]>nums[mid]:
-                l=mid+1
-            else:
-                r=mid
-        smallest_no=r
-        l=smallest_no
-        r=smallest_no-1
-        while l<r:
-            mid=(l+2)//2
-            if nums[mid]==target:
-                return mid
-            elif nums[mid]<taget:
-                l=mid+1
-            elif nums[mid]>target:
-                r=mid-1
-        return -1
+        low=0
+        high=len(nums)-1
+        while low <= high:
+            mid = (low + high) // 2  # Calculate mid pointer
+
+            # Step 1: Check if mid points to the target
+            if nums[mid] == target:
+                return mid  # Return index of the target
             
-
-
-
-
-
-
+            # Step 2: Identify the sorted half
+            if nums[low] <= nums[mid]:  # Left half is sorted
+                # Check if target is in the sorted left half
+                if nums[low] <= target <= nums[mid]:
+                    high = mid - 1  # Eliminate the right half
+                else:
+                    low = mid + 1  # Eliminate the left half
+            else:  # Right half is sorted
+                # Check if target is in the sorted right half
+                if nums[mid] <= target <= nums[high]:
+                    low = mid + 1  # Eliminate the left half
+                else:
+                    high = mid - 1  # Eliminate the right half
+        return -1
         
