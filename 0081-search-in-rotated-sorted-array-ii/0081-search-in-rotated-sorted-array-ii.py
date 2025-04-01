@@ -3,5 +3,8 @@ class Solution:
         hashm={}
         for index,value in enumerate(nums):
             hashm[value]=True
-        return target in hashm            
+        if target in hashm:
+            return True
+        else:
+            return False           
         
