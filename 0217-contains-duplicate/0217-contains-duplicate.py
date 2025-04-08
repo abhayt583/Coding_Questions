@@ -1,9 +1,5 @@
 class Solution:
     def containsDuplicate(self, nums: List[int]) -> bool:
-        dict={}
-        for i,v in enumerate(nums):
-            if v in dict:
-                return True
-            dict[v]=True
-        return False
+        non_duplicate_set=set(nums)
+        return len(non_duplicate_set)<len(nums)
         
