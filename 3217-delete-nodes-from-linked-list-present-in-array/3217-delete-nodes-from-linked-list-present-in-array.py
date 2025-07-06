@@ -7,9 +7,9 @@ class Solution:
     def modifiedList(self, nums: List[int], head: Optional[ListNode]) -> Optional[ListNode]:
         dummy=ListNode(0,head)
         p=dummy
-        my_set=set(nums)
+        my_dict=dict.fromkeys(nums)
         while p.next:
-            if p.next.val in my_set:
+            if p.next.val in my_dict:
                 p.next=p.next.next
             else:
                 p=p.next
